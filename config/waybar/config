@@ -1,0 +1,109 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 24,
+  "spacing": 4,
+  "modules-left": ["hyprland/workspaces", "hyprland/mode", "hyprland/window"],
+  "modules-center": ["custom/playerctl", "clock", "custom/links"],
+  "modules-right": ["pulseaudio", "custom/wifi", "battery", "backlight", "tray"],
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "",
+      "urgent": "‼",
+      "focused": "⦿",
+      "default": "⦾"
+    },
+    "font-size": 8
+  },
+  "hyprland/mode": {
+    "format": "⛛ {mode}"
+  },
+  "hyprland/window": {
+    "format": "{title}",
+    "rewrite": {
+      "(.*) - Mozilla Firefox": "🜁 $1",
+      "(.*) - kitty": "🖳 $1"
+    }
+  },
+  "custom/playerctl": {
+    "exec": "~/.config/waybar/scripts/playerctl-status.sh",
+    "interval": 1,
+    "return-type": "text",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-click-middle": "playerctl previous",
+    "on-double-click": "playerctl next",
+    "max-length": 70,
+    "min-length": 20
+  },
+  "clock": {
+    "interval": 60,
+    "format": " {:%m-%d-%Y (%b) %a, %I:%M %p}",
+    "tooltip-format": "{:%Y-%m-%d | %H:%M}",
+    "locale": "C",
+    "timezone": "localtime"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟 {volume}%",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"],
+      "headphone": "󰋋",
+      "headset": "󰋋"
+    },
+    "tooltip-format": "Device: {desc}",
+    "on-click": "~/.config/waybar/scripts/volume-control.sh -o m",
+    "on-scroll-up": "~/.config/waybar/scripts/volume-control.sh -o i",
+    "on-scroll-down": "~/.config/waybar/scripts/volume-control.sh -o d",
+    "min-length": 9,
+    "max-length": 9
+  },
+  "custom/wifi": {
+    "exec": "~/.config/waybar/scripts/wifi-status.sh",
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "~/.config/waybar/scripts/wifi-menu.sh",
+    "on-click-right": "kitty --title '󰤨 Network Manager TUI' bash -c nmtui",
+    "interval": 1,
+    "min-length": 2,
+    "max-length": 2
+  },
+  "battery": {
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "format": "{icon} {capacity}%",
+    "format-icons": ["󰂎", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-charging": " {capacity}%",
+    "tooltip-format": "Discharging: {time}",
+    "tooltip-format-charging": "Charging: {time}",
+    "interval": 1,
+    "min-length": 9,
+    "max-length": 9
+  },
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "tooltip": false,
+    "on-scroll-up": "~/.config/waybar/scripts/brightness-control.sh -o i",
+    "on-scroll-down": "~/.config/waybar/scripts/brightness-control.sh -o d",
+    "min-length": 9,
+    "max-length": 9
+  },
+  "tray": {
+    "spacing": 6
+  },
+  "custom/links": {
+    "format": "",
+    "on-click": "~/.config/waybar/scripts/links.sh",
+    "tooltip-format": "Abrir menu de links"
+  }
+}
