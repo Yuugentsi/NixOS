@@ -1,0 +1,92 @@
+[global]
+    monitor = 0
+    follow = mouse
+    geometry = "350x5+15+36"
+    progress_bar = true
+    progress_bar_height = 10
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+    indicate_hidden = yes
+    shrink = no
+    transparency = 0 # Não fará efeito com backgrounds opacos, mas mantemos por clareza
+    notification_height = 0
+    separator_height = 2 # Separador um pouco mais visível
+    padding = 12
+    horizontal_padding = 15
+    text_icon_padding = 10
+    frame_width = 2 # Borda sutil de 2px
+    frame_color = "#ff006e" # Cor da borda principal (rosa neon do Wofi)
+    separator_color = "#4a1c31" # Cor do separador, um tom mais escuro do rosa neon
+    sort = yes
+    idle_threshold = 0
+
+    font = 'JetBrains Mono Bold 14' # Usando JetBrains Mono (ou Fira Code se preferir)
+    line_height = 0
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 60
+    word_wrap = yes
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+
+    icon_position = left
+    min_icon_size = 0
+    max_icon_size = 32
+    icon_path = /usr/share/icons/Adwaita/32x32/status/:/usr/share/icons/Adwaita/32x32/devices/:/usr/share/icons/Adwaita/32x32/apps/:/usr/share/icons/Adwaita/32x32/actions/
+
+    sticky_history = yes
+    history_length = 20
+
+    dmenu = /usr/bin/dmenu -p dunst:
+    browser = /usr/bin/firefox -new-tab
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    startup_notification = true
+    verbosity = info
+    corner_radius = 12 # Cantos arredondados, combinando com o Wofi
+    ignore_dbusclose = false
+
+    force_xwayland = false
+
+    force_xinerama = false
+
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+[experimental]
+    per_monitor_dpi = false
+
+[shortcuts]
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    context = ctrl+shift+period
+
+# Urgência Baixa (Low) - Fundo escuro, texto claro
+[urgency_low]
+    background = "#1a0d1a" # Cor base escura do Wofi
+    foreground = "#e6e6fa" # Cor do texto (lavender, do Wofi input)
+    timeout = 4
+    icon = /usr/share/icons/Adwaita/24x24/status/info.png
+
+# Urgência Normal (Normal) - Fundo um pouco diferente, texto claro
+[urgency_normal]
+    background = "#0d1a2e" # Um azul escuro do gradiente do Wofi
+    foreground = "#c9c9dd" # Cor do texto do Wofi entry
+    timeout = 4
+    icon = /usr/share/icons/Adwaita/24x24/status/dialog-information.png
+
+# Urgência Crítica (Critical) - Fundo mais vibrante, borda de destaque
+[urgency_critical]
+    background = "#2e1a0d" # Um marrom escuro/terra do gradiente do Wofi
+    foreground = "#ffffff" # Texto branco puro
+    frame_color = "#ff006e" # Borda rosa neon forte para chamar atenção
+    timeout = 5
+    icon = /usr/share/icons/Adwaita/24x24/status/dialog-error.png
